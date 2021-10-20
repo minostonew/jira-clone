@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    password:
+    url:
+    username:
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: ${MAIL_HOST}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      show_sql: true
+      format_sql: true
+    logging:
+      level:
+        org:
+          hibernate:
+            type: trace
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL:
+          TRACE
+        type:
+          descriptor:
+            sql:
+              BasicBinder:
+                TRACE
+
+
+
